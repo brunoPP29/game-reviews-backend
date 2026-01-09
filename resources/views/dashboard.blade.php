@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Seus filmes avaliados') }}
+            {{ __('Seus jogos avaliados') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
       <!-- Header -->
       <div class="flex items-center justify-between p-6">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-          {{ __("Filmes vistos recentemente") }}
+          {{ __("Jogos avaliados recentemente") }}
         </h2>
 
             <a
@@ -34,7 +34,7 @@
                             this.style.color='';
                         "
             >
-            Vi um novo filme
+            Joguei um novo Jogo!
             </a>
 
       </div>
