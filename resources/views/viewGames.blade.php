@@ -63,14 +63,14 @@
             <div class="overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
                 <div class="p-6 border-b border-gray-200 dark:border-gray-700">
                     <h3 class="text-md font-medium text-gray-900 dark:text-gray-100">
-                        {{ __("Resultados encontrados") }} ({{ $data['data']['count'] ?? count($data['data']['games']) }})
+                        {{ __("Resultados encontrados") }} ({{ $data['data']['count'] ?? count($data['data']['games']) }}) (Primeira página)
                     </h3>
                 </div>
 
                 <div class="p-6">
                     <div class="grid grid-cols-1 gap-4">
                         @foreach($data['data']['games'] as $game)
-                        <div class="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                        <div class="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-[#6366f1] dark:hover:bg-gray-700/50 transition-colors">
                             <div class="flex flex-col">
                                 <span class="text-sm font-semibold text-gray-900 dark:text-gray-100">
                                     {{ $game['game_title'] }}
@@ -82,7 +82,8 @@
                             
                             <div class="flex items-center gap-4">
                                 <a
-                                   class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150">
+                                    href="/game/{{ $game['id'] }}"
+                                    class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150">
                                     {{ __('Avaliar') }}
                                 </a>
                             </div>

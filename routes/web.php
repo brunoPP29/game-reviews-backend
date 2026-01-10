@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SingleGameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,5 +32,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::post('/review', [ReviewController::class, 'search'])->name('searchByName');
-Route::get('/review', [ReviewController::class, 'index'])->name('indexReview');
+//
+Route::post('/search', [SearchController::class, 'search'])->name('searchByName');
+Route::get('/search', [SearchController::class, 'index'])->name('indexSearch');
+
+//GAME CONTROLLER
+Route::get('/game/{id}', [SingleGameController::class, 'index'])->name('indexSingleGame');

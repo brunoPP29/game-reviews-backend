@@ -16,7 +16,7 @@
         </h2>
 
             <a
-            href="/review"
+            href="/search"
             class="inline-flex items-center cursor-pointer
                     rounded-md bg-white px-4 py-2
                     text-md font-medium text-gray-800

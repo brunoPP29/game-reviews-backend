@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\SearchService;
 use Illuminate\Http\Request;
 
-class ReviewController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
