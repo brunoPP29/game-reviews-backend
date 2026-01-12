@@ -17,7 +17,7 @@
     @endphp
 
     <div class="py-12">
-        <div class=" max-w-2xl sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl sm:px-6 lg:px-8">
 
             @if($gameData)
             <!-- Card principal -->
@@ -70,9 +70,10 @@
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                         Sua nota ajuda a construir o maior ranking de games da nossa comunidade.
                     </p>
-
-                    <button
-                        class="px-4 py-2 mt-3 rounded-md bg-white dark:bg-gray-200
+                    <br>
+                    <a
+                        href="/avaliar/{{ $gameData['id'] }}"
+                        class="px-4 py-2 rounded-md bg-white dark:bg-gray-200
                         text-gray-800 font-medium shadow-md transition-all duration-200"
                         onmouseover="
                             this.style.background='#6366f1';
@@ -88,7 +89,7 @@
                         "
                     >
                         AVALIAR AGORA
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Footer -->

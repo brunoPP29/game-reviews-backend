@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleGameController;
+use App\Http\Controllers\ReviewGameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,13 +29,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/search', [SearchController::class, 'search'])->name('searchByName');
+    Route::get('/search', [SearchController::class, 'index'])->name('indexSearch');
+    
+    //GAME CONTROLLER
+    Route::get('/game/{id}', [SingleGameController::class, 'index'])->name('indexSingleGame');
+    Route::get('/avaliar/{id}', [ReviewGameController::class, 'index'])->name('reviewGame');
+    Route::post('/avaliar/{id}', [ReviewGameController::class, 'create'])->name('createReviewGame');
 });
 
 require __DIR__.'/auth.php';
 
 //
-Route::post('/search', [SearchController::class, 'search'])->name('searchByName');
-Route::get('/search', [SearchController::class, 'index'])->name('indexSearch');
-
-//GAME CONTROLLER
-Route::get('/game/{id}', [SingleGameController::class, 'index'])->name('indexSingleGame');

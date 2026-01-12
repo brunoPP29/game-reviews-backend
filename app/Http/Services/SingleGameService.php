@@ -29,8 +29,8 @@ class SingleGameService{
 
 
             //variaveis que precisam de outra busca
-            $plataformId = $response['data']['games'][0]['platform'] ?? 'N/A';
-            $developerId = $response['data']['games'][0]['developers'][0] ?? 'N/A';
+            $plataformId = $response['data']['games'][0]['platform'] ?? 0;
+            $developerId = $response['data']['games'][0]['developers'][0] ?? 0;
             ///////////////////
                 //platform GET
                 //tem que pegar a lista de todas as plataformas e pegar o id, mas carregar tudo...
@@ -58,7 +58,7 @@ class SingleGameService{
         }
         
         $data = $response->json();
-        return $data['data']['developers'][$developerId]['name'];
+        return $data['data']['developers'][$developerId]['name'] ?? 'N/A';
     }
 
     public function getPlatformName($plataformId){
@@ -74,7 +74,7 @@ class SingleGameService{
         }
         
         $data = $response->json();
-        return $data['data']['platforms'][$plataformId]['name'];
+        return $data['data']['platforms'][$plataformId]['name'] ?? 'N/A';
         
         }
 }
