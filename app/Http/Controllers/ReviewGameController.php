@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\ReviewGameService;
 use Illuminate\Http\Request;
 
 class ReviewGameController extends Controller
@@ -17,9 +18,15 @@ class ReviewGameController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $req)
+    public function create(Request $req, ReviewGameService $service)
     {
-        
+        //criar record de review unico para id do game
+        $recordReview = $service->create($req->request);
+        if ($recordReview === false) {
+            return back()->with('error', 'Erro ao salvar a review.');
+            }
+            //->route('showReviews')
+            return back()->with('success', 'Review salva com sucesso.');
     }
 
     /**

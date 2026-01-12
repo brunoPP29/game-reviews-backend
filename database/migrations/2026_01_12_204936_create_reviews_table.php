@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('score');
             $table->text('text');
+            $table->string('user');
         });
     }
 
