@@ -19,6 +19,16 @@ class SearchController extends Controller
             $search = urlencode($request->search); // ex: ?name=forza   
             $page = $request->page;
             $data = $service->searchByName($search, $page);
+            $games = $data['data']['games'];
+            $uniqueGames = collect($games)
+                ->sortBy(function ($game) {
+                    return $game['release_date'] ?? '9999-12-31';
+                })
+                ->unique(function ($game) {
+                    return strtolower(trim($game['game_title']));
+                })
+                ->values()
+                ->all();
             return view('viewGames', compact('data', 'page'));
             
         }

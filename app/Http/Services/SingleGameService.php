@@ -29,8 +29,8 @@ class SingleGameService{
 
 
             //variaveis que precisam de outra busca
-            $plataformId = $response['data']['games'][0]['platform'];
-            $developerId = $response['data']['games'][0]['developers'][0];
+            $plataformId = $response['data']['games'][0]['platform'] ?? 'N/A';
+            $developerId = $response['data']['games'][0]['developers'][0] ?? 'N/A';
             ///////////////////
                 //platform GET
                 //tem que pegar a lista de todas as plataformas e pegar o id, mas carregar tudo...
@@ -40,6 +40,7 @@ class SingleGameService{
                 //todos esses processos eh mt nada aver, ou to deixando passar algo bem burro e simples........ esperoq  nao
             $developerName = $this->getDeveloperName($developerId);
             $platformName = $this->getPlatformName($plataformId);
+            return array($data, $developerName, $platformName);
     }
 
 

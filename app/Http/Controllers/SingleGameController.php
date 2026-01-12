@@ -14,6 +14,7 @@ class SingleGameController extends Controller
         $idGame = $request->id;
         //get info games
         $gameInfos = $service->getGameInfos($idGame);
+        return view('singleGamePage', compact('gameInfos'));
         
     }
 

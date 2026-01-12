@@ -5,6 +5,17 @@
         </h2>
     </x-slot>
 
+    @php
+    $uniqueGames = collect($data['data']['games'])
+        ->sortBy(function ($game) {
+            return $game['release_date'] ?? '9999-12-31';
+        })
+        ->unique(function ($game) {
+            return strtolower(trim($game['game_title']));
+        })
+        ->values();
+    @endphp
+
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <!-- Card Principal: Busca -->
@@ -59,17 +70,12 @@
 
             <!-- Card de Resultados -->
             {{-- Acessando o caminho correto: $data['data']['games'] --}}
-            @if(isset($data['data']['games']) && count($data['data']['games']) > 0)
+            @if(isset($uniqueGames) && count($uniqueGames) > 0)
             <div class="overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
-                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-md font-medium text-gray-900 dark:text-gray-100">
-                        {{ __("Resultados encontrados") }} ({{ $data['data']['count'] ?? count($data['data']['games']) }}) (Primeira página)
-                    </h3>
-                </div>
 
                 <div class="p-6">
                     <div class="grid grid-cols-1 gap-4">
-                        @foreach($data['data']['games'] as $game)
+                        @foreach($uniqueGames as $game)
                         <div class="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-[#6366f1] dark:hover:bg-gray-700/50 transition-colors">
                             <div class="flex flex-col">
                                 <span class="text-sm font-semibold text-gray-900 dark:text-gray-100">
