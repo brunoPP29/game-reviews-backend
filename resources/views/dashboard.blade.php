@@ -12,8 +12,9 @@
       <!-- Header -->
       <div class="flex items-center justify-between p-6">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-          {{ __("Jogos avaliados recentemente") }}
+          {{ __("Jogos") }}
         </h2>
+
 
             <a
             href="/search"
@@ -39,10 +40,36 @@
 
       </div>
 
-      <!-- Content -->
-      <div class="border-t border-gray-200 p-6 dark:border-gray-700">
-        
+            <div class="flex items-center justify-between p-6">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          {{ __("Minhas análises") }}
+        </h2>
+
+
+            <a
+            href="/reviews"
+            class="inline-flex items-center cursor-pointer
+                    rounded-md bg-white px-4 py-2
+                    text-md font-medium text-gray-800
+                    shadow-md transition-all duration-200"
+                    onmouseover="
+                            this.style.background='#6366f1';
+                            this.style.color='#ffffff';
+                            this.style.boxShadow='0 8px 15px rgba(0,0,0,0.2)';
+                            this.style.transform='translateY(-2px)';
+                        "
+                    onmouseout="
+                            this.style.background='';
+                            this.style.boxShadow='';
+                            this.style.transform='';
+                            this.style.color='';
+                        "
+            >
+            Quero ver minhas análises!
+            </a>
+
       </div>
+
 
     </div>
   </div>
