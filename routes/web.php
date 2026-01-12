@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/game/{id}', [SingleGameController::class, 'index'])->name('indexSingleGame');
     Route::get('/avaliar/{id}', [ReviewGameController::class, 'index'])->name('reviewGame');
     Route::post('/avaliar/{id}', [ReviewGameController::class, 'create'])->name('createReviewGame');
+    Route::get('/reviews/{user?}', [ReviewGameController::class, 'show'])->name('showReviews');
 });
 
 require __DIR__.'/auth.php';

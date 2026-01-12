@@ -17,6 +17,11 @@
                 </div>
 
                 <div class="p-4">
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <form method="post" class="space-y-4">
                         @csrf
                         <input name="idGame" type="hidden" value={{$idGame}}>

@@ -21,4 +21,10 @@ class ReviewGameService{
 
     }
 
+
+    public function getReviewsById($userId){
+        return Review::where('user', $userId)
+                ->get();
+    }
+
 }

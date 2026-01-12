@@ -77,4 +77,22 @@ class SingleGameService{
         return $data['data']['platforms'][$plataformId]['name'] ?? 'N/A';
         
         }
+
+        public function getGameName($gameId){
+        $response = Http::timeout(30)
+            ->retry(3, 1000)
+            ->acceptJson()
+            ->get('https://api.thegamesdb.net/v1/Games/ByGameID', [
+                'apikey' => $this->apiKey,
+                'id'     => $gameId,
+            ]);
+
+            if ($response->failed()) {
+            dd($response->body());
+        }
+        
+        $data = $response->json();
+        return $data['data']['games'][0]['game_title'] ?? 'N/A';
+        
+        }
 }
