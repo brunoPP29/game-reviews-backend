@@ -68,11 +68,12 @@ class ReviewGameController extends Controller
 
         $reviewsNameGame->push([
             'game_name' => $gameName,
+            'user_name' => $userModel->name,
+            'id'        => $review->id,
             'id_game'   => $review->id_game,
             'title'     => $review->title,
             'score'     => $review->score,
             'text'      => $review->text,
-            'user_name' => $userModel->name,
         ]);
     }
     return view('showReviews', compact('reviewsNameGame'));
@@ -98,8 +99,14 @@ class ReviewGameController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id, ReviewGameService $ReviewService)
     {
-        //
+        $delete = $ReviewService->delete($id);
+        if ($delete === true) {
+            return back()->with('success', 'Review salva com sucesso.');
+
+        }else{
+            return back()->with('error', 'Algo deu errado ao tentar deletar review');
+        }
     }
 }

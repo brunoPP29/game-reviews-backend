@@ -26,18 +26,27 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', function () {return view('dashboard');});
+
+    //profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //search
+
     Route::post('/search', [SearchController::class, 'search'])->name('searchByName');
     Route::get('/search', [SearchController::class, 'index'])->name('indexSearch');
     
     //GAME CONTROLLER
     Route::get('/game/{id}', [SingleGameController::class, 'index'])->name('indexSingleGame');
+
+    //reviews
     Route::get('/avaliar/{id}', [ReviewGameController::class, 'index'])->name('reviewGame');
     Route::post('/avaliar/{id}', [ReviewGameController::class, 'create'])->name('createReviewGame');
     Route::get('/reviews/{user?}', [ReviewGameController::class, 'show'])->name('showReviews');
-    Route::get('/', function () {return view('dashboard');});
+
+    //CRUD REVIEWS
+    Route::delete('/reviews/delete/{id}', [ReviewGameController::class, 'delete'])->name('deleteReview');
     
 });
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Services;
 
+use App\Models\Review;
+
 class SearchService{
     public function searchByName($search, $page){
             $apikey = env('API_KEY');
@@ -27,4 +29,5 @@ class SearchService{
 
             return json_decode($response, true);
     }
+
 }

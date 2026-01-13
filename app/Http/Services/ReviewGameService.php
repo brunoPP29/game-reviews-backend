@@ -27,4 +27,12 @@ class ReviewGameService{
                 ->get();
     }
 
+
+    public function delete($id){
+        $deleted = Review::where('id', $id)
+                ->delete();
+        return $deleted > 0;
+        
+    }
+
 }
