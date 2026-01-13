@@ -27,7 +27,7 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <button id="copyAndGo"
-                            class="cursor-pointer rounded-md bg-white dark:bg-gray-200 mt-2 px-2 py-2 
+                            class="cursor-pointer rounded-md bg-white dark:bg-gray-200 px-2 py-2 
                                 text-gray-800 font-medium shadow-md transition-all duration-200"
                             onmouseover="
                                 this.style.background='#6366f1';
@@ -98,6 +98,12 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('indexSearch')" :active="request()->routeIs('indexSearch')">
+                        {{ __('Pesquisar') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('showReviews')" :active="request()->routeIs('showReviews')">
+                        {{ __('Minhas reviews') }}
             </x-responsive-nav-link>
         </div>
 
