@@ -10,7 +10,7 @@
     <div class="overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
       
             <!-- Header -->
-            <div class="flex items-center justify-between p-6">
+            <div class="flex items-center justify-between px-6 pt-6">
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 {{ __("Pesquise o jogo que quer avaliar") }}
 

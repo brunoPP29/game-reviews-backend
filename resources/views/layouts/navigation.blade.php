@@ -18,11 +18,32 @@
                     <x-nav-link :href="route('indexSearch')" :active="request()->routeIs('indexSearch')">
                         {{ __('Pesquisar') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('showReviews')" :active="request()->routeIs('showReviews')">
+                        {{ __('Minhas reviews') }}
+                    </x-nav-link>
                 </div>
             </div>
-
+            
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <button id="copyAndGo"
+                            class="cursor-pointer rounded-md bg-white dark:bg-gray-200 mt-2 px-2 py-2 
+                                text-gray-800 font-medium shadow-md transition-all duration-200"
+                            onmouseover="
+                                this.style.background='#6366f1';
+                                this.style.boxShadow='0 6px 12px rgba(0,0,0,0.2)';
+                                this.style.transform='translateY(-2px)';
+                                this.style.color='#ffffff';
+                            "
+                            onmouseout="
+                                this.style.background='';
+                                this.style.boxShadow='';
+                                this.style.transform='';
+                                this.style.color='#111827';
+                            "
+                        >
+                        <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/link--v1.png" alt="link--v1"/>
+                    </button>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -115,3 +136,16 @@
         </div>
     </div>
 </nav>
+
+        <script>
+            document.getElementById('copyAndGo').addEventListener('click', async () => {
+                const baseUrl = window.location.origin;
+                const userId = "{{ Auth::id() }}";
+
+                const finalUrl = `${baseUrl}/reviews/${userId}`;
+
+                await navigator.clipboard.writeText(finalUrl);
+
+                alert('O url de suas análises foi copiado!');
+            });
+        </script>

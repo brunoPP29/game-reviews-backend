@@ -12,9 +12,11 @@ class ReviewGameController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $req){
+    public function index(Request $req, SingleGameService $SingleGameService){
         $idGame = $req->id;
-        return view('reviewPage', compact('idGame'));
+        $gameName = $SingleGameService->getGameName($idGame);
+
+        return view('reviewPage', compact('idGame', 'gameName'));
     }
 
     /**
@@ -66,6 +68,7 @@ class ReviewGameController extends Controller
 
         $reviewsNameGame->push([
             'game_name' => $gameName,
+            'id_game'   => $review->id_game,
             'title'     => $review->title,
             'score'     => $review->score,
             'text'      => $review->text,

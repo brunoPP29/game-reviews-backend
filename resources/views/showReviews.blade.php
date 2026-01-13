@@ -27,11 +27,18 @@
                             </p>
                         </div>
 
-                        <span class="px-2 py-1 text-xs font-bold rounded-md 
+                        <p class="text-center px-2 py-1 text-sm font-bold rounded-md 
                             bg-indigo-100 text-indigo-700 
                             dark:bg-indigo-900 dark:text-indigo-300">
                             {{ $review['score'] }}/10
-                        </span>
+                            <br>
+                            <a 
+                            href="/game/{{ $review['id_game'] }}"
+                            class="inline-flex items-center my-2 px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150">
+                            >
+                            Ver jogo
+                            </a>
+                        </p>
                     </div>
 
                     <!-- Body -->

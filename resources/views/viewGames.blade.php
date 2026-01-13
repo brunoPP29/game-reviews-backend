@@ -72,8 +72,10 @@
             {{-- Acessando o caminho correto: $data['data']['games'] --}}
             @if(isset($uniqueGames) && count($uniqueGames) > 0)
             <div class="overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
-
                 <div class="p-6">
+                    <h2 class="text-lg pb-4 font-semibold text-gray-900 dark:text-gray-100">
+                        {{ __("Resultados encontrados:") }}
+                    </h2>
                     <div class="grid grid-cols-1 gap-4">
                         @foreach($uniqueGames as $game)
                         <div class="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-[#6366f1] dark:hover:bg-gray-700/50 transition-colors">
@@ -107,7 +109,7 @@
                                     @csrf
                                     <input type="hidden" name="search" value="{{ request('search') }}">
                                     <input type="hidden" name="page" value="{{ $page - 1 }}">
-                                    <button type="submit" class="text-sm text-indigo-600 hover:underline">
+                                    <button type="submit" class="text-sm font-bold text-indigo-600 hover:underline">
                                         &larr; Anterior
                                     </button>
                                 </form>
@@ -125,7 +127,7 @@
                                 @csrf
                                 <input type="hidden" name="search" value="{{ request('search') }}">
                                 <input type="hidden" name="page" value="{{ $page + 1 }}">
-                                <button type="submit" class="text-sm text-indigo-600 hover:underline">
+                                <button type="submit" class="text-sm font-bold text-indigo-600 hover:underline">
                                     Próxima &rarr;
                                 </button>
                             </form>

@@ -12,11 +12,12 @@
             <div class="overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
                 <div class="p-4 border-b border-gray-200 dark:border-gray-700">
                     <h3 class="text-md font-semibold text-gray-900 dark:text-gray-100">
-                        Envie sua avaliação
+                        Envie sua avaliação<br> <strong>Jogo: {{$gameName}}</strong>
                     </h3>
                 </div>
 
                 <div class="p-4">
+                    
                     @if(session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
