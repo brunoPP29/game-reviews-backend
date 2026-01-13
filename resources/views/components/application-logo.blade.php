@@ -1,1 +1,1 @@
-
+<h1 class="text-purple-700 bg-black py-2 px-4 rounded-xl font-bold">Games-Reviews</h1>

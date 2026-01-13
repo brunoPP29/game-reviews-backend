@@ -19,7 +19,7 @@
         </div>
         
         <!-- Content -->
-        <form method="post" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md max-w-md mx-auto space-y-4">                                   
+        <form method="post" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md max-w-full space-y-4">                                   
                     @csrf
 
                     <div>

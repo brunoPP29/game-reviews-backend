@@ -11,7 +11,7 @@ class SearchController extends Controller
      */
 
     public function index(){
-        return view('newMovie');
+        return view('searchPage');
     }
 
     public function search(Request $request, SearchService $service)

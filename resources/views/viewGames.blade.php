@@ -27,7 +27,7 @@
                 </div>
                 
                 <div class="p-6">
-                    <form method="POST" class="max-w-md mx-auto space-y-4">
+                    <form method="POST" class="max-w-full space-y-4">
                         @csrf
                         <div>
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Título</label>

@@ -8,6 +8,11 @@
     <div class="mt-8 flex justify-center">
         <div class="w-full max-w-2xl space-y-4">
 
+            @if(session('success'))
+                <div class="bg-green-500 text-white p-2 rounded">
+                    {{ session('success') }}
+                </div>
+            @endif
             @forelse($reviewsNameGame as $review)
                 <div class="rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
 
