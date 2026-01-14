@@ -13,7 +13,7 @@ class ReviewGameService{
                 'title'   => $data['title'],
                 'score'   => $data['score'],
                 'text'    => $data['text'],
-                'user_id' => $data['user_id'],
+                'user_id' => Auth::id(),
             ]);
         } catch (\Exception $e) {
             return false;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateReviewRequest;
 use App\Http\Services\ReviewGameService;
 use App\Http\Services\SingleGameService;
 use Illuminate\Http\Request;
@@ -22,16 +23,10 @@ class ReviewGameController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $req, ReviewGameService $service)
+    public function create(CreateReviewRequest $req, ReviewGameService $service)
     {   
-        //filtragem de dados apenas necessarios
-        $data = [
-            'id_game' => $req->idGame,
-            'title'   => $req->title,
-            'score'   => $req->score,
-            'text'    => $req->text,
-            'user_id' => Auth::id(),
-        ];
+        //filtragem de dados apenas necessarios e validados
+        $data = $req->validated();
         //criar record de review unico para id do game
         $recordReview = $service->create($data);
         if ($recordReview === false) {

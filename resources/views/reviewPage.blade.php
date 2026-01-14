@@ -28,7 +28,7 @@
 
                     <form method="post" class="space-y-6">
                         @csrf
-                        <input name="idGame" type="hidden" value={{$idGame}}>
+                        <input name="id_game" type="hidden" value={{$idGame}}>
                         
                         <div>
                             <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
