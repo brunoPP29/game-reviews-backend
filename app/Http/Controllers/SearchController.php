@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Services\SearchService;
+
+use App\Http\Services\GamesAPIService;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -14,7 +15,7 @@ class SearchController extends Controller
         return view('searchPage');
     }
 
-    public function search(Request $request, SearchService $service)
+    public function search(Request $request, GamesAPIService $service)
         {
             $search = urlencode($request->search); // ex: ?name=forza   
             $page = $request->page;

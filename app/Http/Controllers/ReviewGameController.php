@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateReviewRequest;
+use App\Http\Services\GamesAPIService;
 use App\Http\Services\ReviewGameService;
 use App\Http\Services\SingleGameService;
 use Illuminate\Http\Request;
@@ -13,9 +14,9 @@ class ReviewGameController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $req, SingleGameService $SingleGameService){
+    public function index(Request $req, GamesAPIService $GamesAPI){
         $idGame = $req->id;
-        $gameName = $SingleGameService->getGameName($idGame);
+        $gameName = $GamesAPI->getGameName($idGame);
 
         return view('reviewPage', compact('idGame', 'gameName'));
     }
@@ -51,7 +52,7 @@ class ReviewGameController extends Controller
      */
     public function show(
     ReviewGameService $service,
-    SingleGameService $SingleGameService,
+    GamesAPIService $GamesAPI,
     $user = null
     )
     {
@@ -67,7 +68,7 @@ class ReviewGameController extends Controller
     $reviewsNameGame = collect();
 
     foreach ($reviews as $review) {
-        $gameName = $SingleGameService->getGameName($review->id_game);
+        $gameName = $GamesAPI->getGameName($review->id_game);
 
         $reviewsNameGame->push([
             'game_name' => $gameName,

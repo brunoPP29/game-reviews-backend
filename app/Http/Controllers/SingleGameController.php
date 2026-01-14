@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Services\GamesAPIService;
 use Illuminate\Http\Request;
-use App\Http\Services\SingleGameService;
 
 class SingleGameController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, SingleGameService $service)
+    public function index(Request $request, GamesAPIService $service)
     {
         $idGame = $request->id;
         //get info games
