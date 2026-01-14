@@ -23,9 +23,17 @@ class ReviewGameController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(Request $req, ReviewGameService $service)
-    {
+    {   
+        //filtragem de dados apenas necessarios
+        $data = [
+            'id_game' => $req->idGame,
+            'title'   => $req->title,
+            'score'   => $req->score,
+            'text'    => $req->text,
+            'user'    => Auth::id(),
+        ];
         //criar record de review unico para id do game
-        $recordReview = $service->create($req->request);
+        $recordReview = $service->create($data);
         if ($recordReview === false) {
             return back()
             ->with('error', 'Erro ao salvar a review.');
