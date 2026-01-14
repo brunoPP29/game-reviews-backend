@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateReviewRequest;
 use App\Http\Services\GamesAPIService;
 use App\Http\Services\ReviewGameService;
-use App\Http\Services\SingleGameService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
