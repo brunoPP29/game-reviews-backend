@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('score');
             $table->text('text');
-            $table->string('user');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
         });
     }
 

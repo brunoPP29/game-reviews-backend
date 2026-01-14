@@ -30,7 +30,7 @@ class ReviewGameController extends Controller
             'title'   => $req->title,
             'score'   => $req->score,
             'text'    => $req->text,
-            'user'    => Auth::id(),
+            'user_id' => Auth::id(),
         ];
         //criar record de review unico para id do game
         $recordReview = $service->create($data);

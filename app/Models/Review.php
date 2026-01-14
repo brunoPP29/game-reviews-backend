@@ -18,7 +18,7 @@ class Review extends Model
         'title',
         'score',
         'text',
-        'user',
+        'user_id',
     ];
 
     public function userRelation()

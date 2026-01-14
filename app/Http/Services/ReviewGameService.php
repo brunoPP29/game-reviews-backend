@@ -13,7 +13,7 @@ class ReviewGameService{
                 'title'   => $data['title'],
                 'score'   => $data['score'],
                 'text'    => $data['text'],
-                'user'    => $data['user'],
+                'user_id' => $data['user_id'],
             ]);
         } catch (\Exception $e) {
             return false;
@@ -23,7 +23,7 @@ class ReviewGameService{
 
 
     public function getReviewsById($userId){
-        return Review::where('user', $userId)
+        return Review::where('user_id', $userId)
                        ->get();
     }
 
