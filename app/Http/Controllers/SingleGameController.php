@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\FavoritesService;
 use App\Http\Services\GamesAPIService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class SingleGameController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, GamesAPIService $service)
+    public function index(Request $request, GamesAPIService $service, FavoritesService $favorite)
     {
         $idGame = $request->id;
         //get info games
         $gameInfos = $service->getGameInfos($idGame);
-        return view('singleGamePage', compact('gameInfos'));
+        $favorite = $favorite->itsFavorite($idGame, Auth::id());
+        return view('singleGamePage', compact('gameInfos', 'favorite'));
         
     }
 

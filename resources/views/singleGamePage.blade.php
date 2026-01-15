@@ -38,6 +38,12 @@
                     </p>
                 </div>
 
+                @if(session('error'))
+                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded shadow-sm" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 flex items-start gap-4">
                         <div class="p-2 bg-white dark:bg-gray-800 rounded-md shadow-sm text-indigo-600">
@@ -71,6 +77,24 @@
                         </svg>
                         AVALIAR AGORA
                     </a>
+                    @if($favorite === false)
+                    <a href="/favorite/{{ $gameData['id'] }}" 
+                       class="inline-flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg shadow-lg hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 4a1 1 0 011 1v4h4a1 1 0 110 2h-4v4a1 1 0 11-2 0v-4H5a1 1 0 110-2h4V5a1 1 0 011-1z"/>
+                        </svg>
+                            Favoritar
+                    </a>
+                    @else
+                    <a href="/unfavorite/{{ $gameData['id'] }}" 
+                       class="inline-flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg shadow-lg hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 4a1 1 0 011 1v4h4a1 1 0 110 2h-4v4a1 1 0 11-2 0v-4H5a1 1 0 110-2h4V5a1 1 0 011-1z"/>
+                        </svg>
+                            Desfavoritar
+                    </a>
+                    @endif
+                    
                 </div>
             </div>
             @else

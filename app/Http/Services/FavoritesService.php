@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Services;
-use App\Models\Review;
+use App\Models\Favorites;
 use Illuminate\Support\Facades\Auth;
 
-class FavoriteService{
+class FavoritesService{
 
-    public function create($data){
+    public function create($id_game){
         try {
-            return Review::create([
-                'id_game' => $data['id_game'],
+            return Favorites::create([
+                'id_game' => $id_game,
                 'user_id' => Auth::id(),
             ]);
         } catch (\Exception $e) {
@@ -20,16 +20,28 @@ class FavoriteService{
 
 
     public function getFavoritesById($userId){
-        return Review::where('user_id', $userId)
+        return Favorites::where('user_id', $userId)
                        ->get();
     }
 
 
-    public function delete($id){
-        $deleted = Review::where('id', $id)
-                           ->delete();
+    public function destroy($id_game){
+        $deleted = Favorites::where('id_game', $id_game)
+                            ->where('user_id', Auth::id())
+                            ->delete();
         return $deleted > 0;
         
+    }
+
+    public function itsFavorite($id_game, $userId){
+        try {
+            $favorite = Favorites::where('id_game', $id_game)
+                ->where('user_id', $userId)
+                ->firstOrFail();
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return false;
+        }
+
     }
 
 }

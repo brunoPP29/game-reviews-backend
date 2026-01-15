@@ -52,7 +52,9 @@ Route::middleware('auth')->group(function () {
     //FAVORITES
 
     Route::get('/favorites/{user?}', [FavoritesController::class, 'index'])->name('showFavorites');
-    
+    Route::get('/favorite/{id_game}', [FavoritesController::class, 'create'])->name('createFavorite');
+    Route::get('/unfavorite/{id_game}', [FavoritesController::class, 'destroy'])->name('destroyFavorite');
+
 });
 
 require __DIR__.'/auth.php';
