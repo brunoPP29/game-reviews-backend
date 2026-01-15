@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleGameController;
@@ -47,6 +48,10 @@ Route::middleware('auth')->group(function () {
 
     //CRUD REVIEWS
     Route::delete('/reviews/delete/{id}', [ReviewGameController::class, 'delete'])->name('deleteReview');
+
+    //FAVORITES
+
+    Route::get('/favorites/{user?}', [FavoritesController::class, 'index'])->name('showFavorites');
     
 });
 

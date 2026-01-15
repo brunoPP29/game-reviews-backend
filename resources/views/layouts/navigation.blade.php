@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('showReviews')" :active="request()->routeIs('showReviews')">
                         {{ __('Minhas reviews') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('showFavorites')" :active="request()->routeIs('showFavorites')">
+                        {{ __('Favoritos') }}
+                    </x-nav-link>
                 </div>
             </div>
             
@@ -104,6 +107,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('showReviews')" :active="request()->routeIs('showReviews')">
                         {{ __('Minhas reviews') }}
+            </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('showFavorites')" :active="request()->routeIs('showFavorites')">
+                        {{ __('Favoritos') }}
             </x-responsive-nav-link>
         </div>
 
