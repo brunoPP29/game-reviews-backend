@@ -27,6 +27,13 @@ class ReviewGameService{
                        ->get();
     }
 
+    public function getReviewsByIdLastFive($userId){
+        return Review::where('user_id', $userId)
+                ->orderBy('created_at', 'desc')
+                ->limit(5)
+                ->get();
+    }
+
 
     public function delete($id){
         $deleted = Review::where('id', $id)

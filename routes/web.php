@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleGameController;
 use App\Http\Controllers\ReviewGameController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,16 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('dashboardIndex');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {return view('dashboard');});
+    Route::get('/', [DashboardController::class, 'index']);
 
     //profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

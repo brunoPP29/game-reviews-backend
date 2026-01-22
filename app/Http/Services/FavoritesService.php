@@ -24,6 +24,13 @@ class FavoritesService{
                        ->get();
     }
 
+    public function getFavoritesByIdLastFive($userId){
+        return Favorites::where('user_id', $userId)
+                ->orderBy('created_at', 'desc')
+                ->limit(5)
+                ->get();
+    }
+
 
     public function destroy($id_game){
         $deleted = Favorites::where('id_game', $id_game)
