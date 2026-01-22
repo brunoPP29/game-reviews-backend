@@ -13,24 +13,26 @@
                             border border-gray-200 dark:border-gray-700">
 
                     <!-- Header -->
-                    <div class="p-4 border-b border-gray-200 dark:border-gray-700 
-                                flex justify-between items-center">
+                    <div class="p-4 border-b border-gray-200 dark:border-gray-700">
                         <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-100">
                             {{ $fav['game_name'] }}
                         </h4>
-
                     </div>
 
                     <!-- Body -->
-                    <div class="p-4 space-y-2 text-xs text-gray-500 dark:text-gray-400">
-                        @foreach($fav['data'] as $item)
+                    <div class="p-4 text-xs text-gray-500 dark:text-gray-400">
+                        @php
+                            $item = $fav['data']->first();
+                        @endphp
+
+                        @if($item)
                             <div class="flex justify-between">
                                 <span>Favoritado por: {{ $user_name }}</span>
                                 <span>
                                     {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i') }}
                                 </span>
                             </div>
-                        @endforeach
+                        @endif
                     </div>
 
                     <!-- Footer -->

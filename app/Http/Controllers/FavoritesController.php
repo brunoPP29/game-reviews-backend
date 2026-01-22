@@ -13,28 +13,30 @@ class FavoritesController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $req, FavoritesService $service, GamesAPIService $gamesAPI)
-    {
-        if ($req->user !== null) {
-            $user_id = $req->user;
-        }else{
-            $user_id = Auth::id();
-        }
-        $data = $service->getFavoritesById($user_id);
-        //game_name
-        $favorite_data = collect();
+{
+    $user_id = $req->user ?? Auth::id();
 
-        foreach ($data as $favorited) {
-            $game_name = $gamesAPI->getGameName($favorited->id_game);
-            $favorite_data->push([
-                'game_name' => $game_name,
-                'data' => $data,
-            ]);
-        }
-        //user_name
-        $userModel = \App\Models\User::findOrFail($user_id);
-        $user_name = $userModel->name;
-        return view('showFavorites', compact('favorite_data', 'user_name'));
+    $data = $service->getFavoritesById($user_id);
+
+    $favorite_data = collect();
+
+    // Agrupa por jogo
+    $grouped = $data->groupBy('id_game');
+
+    foreach ($grouped as $id_game => $items) {
+        $game_name = $gamesAPI->getGameName($id_game);
+
+        $favorite_data->push([
+            'game_name' => $game_name,
+            'data'      => $items, // agora é só desse jogo
+        ]);
     }
+
+    $userModel = \App\Models\User::findOrFail($user_id);
+    $user_name = $userModel->name;
+
+    return view('showFavorites', compact('favorite_data', 'user_name'));
+}
 
     /**
      * Show the form for creating a new resource.
