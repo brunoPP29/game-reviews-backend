@@ -73,9 +73,5 @@ Acesse em: http://127.0.0.1:8000
 *   app/Models: Definição dos modelos User e Review com seus respectivos relacionamentos.
 *   resources/views: Templates Blade para renderização das páginas.
 
-## Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
 ---
 Desenvolvido por brunoPP29 (https://github.com/brunoPP29)
